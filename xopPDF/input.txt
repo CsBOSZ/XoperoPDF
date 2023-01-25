@@ -1,1 +1,49 @@
-tak
+//AUTHORauthor //TITLEtitle
+//IMG/home/bogusz/RiderProjects/xopPDF/xopPDF/Java_programming_language_logo.svg.png|200|200
+
+
+//CS0|250|4 CS0|250|4 //CR CR or RR 
+
+
+//SS40 SS40 //SR SR or RR
+
+
+//|CS0|250|4 CS0|250|4 //CR CR
+
+
+//|SS40 |SS40 //SR CR
+
+
+//RRR RRR //RR RR
+
+
+//RRR RRR //AShttps://github.com AShttps://github.com //AR AR
+
+
+//H1 H1
+
+
+//H2 H2
+
+
+//H3 H3
+
+
+//RRR RRR //|HCS10|200|30 |HCS10|200|30 //H1 H1 
+
+
+//|HCR1 |HCR1 or |HRR1 //H1 H1
+
+
+//RRR RRR //|HSS120 |HSS120 //H1 H1 
+
+
+//|HSR1 |HSR1 or |HRR1 //H1 H1
+
+
+
+
+
+
+
+
