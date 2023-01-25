@@ -17,7 +17,7 @@ void tak(ref Document doc,string t = "tak")
      using PdfWriter writer = PdfWriter.GetInstance(doc, fs);
      doc.Open();
      //File.ReadAllText("/home/bogusz/RiderProjects/xopPDF/xopPDF/input.txt")
-     doc.DocAdd("tak adam //C32,41,245 //S50 tak mi //CR //SR tak \nnie");
+     doc.DocAdd("//CR tak adam //C|245|41|245 //S|50 tak mi //CR //SR tak \nnie");
 
      doc.Close();
  }
