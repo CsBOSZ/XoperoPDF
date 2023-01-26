@@ -1,3 +1,8 @@
+using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices.ComTypes;
+using Aspose.Svg;
+using Aspose.Svg.Converters;
+using Aspose.Svg.Saving;
 using iTextSharp.text;
 
 namespace xopPDF.elements;
@@ -46,7 +51,7 @@ public static class Parser
                    
                },
                
-               {"CS", (string arg) =>
+               {"CS>", (string arg) =>
                    {
                        var args = arg.Split("|");
 
@@ -64,7 +69,7 @@ public static class Parser
                    
                },
                
-               {"|CS", (string arg) =>
+               {"|CS>", (string arg) =>
                    {
                        var args = arg.Split("|");
 
@@ -96,7 +101,7 @@ public static class Parser
             
                    }
                },
-               {"SS", (string arg) =>
+               {"SS>", (string arg) =>
                    {
                        if (int.TryParse(arg, out var arg1))
                        {
@@ -105,7 +110,7 @@ public static class Parser
                    }
                    
                },
-               {"|SS", (string arg) =>
+               {"|SS>", (string arg) =>
                    {
                        if (int.TryParse(arg, out var arg1))
                        {
@@ -114,17 +119,17 @@ public static class Parser
                    }
                    
                },
-               {"|HCS", (string arg) =>
+               {"|HCS>", (string arg) =>
                    {
-                       var a = arg[1..];
-                       var args = a.Split("|");
-                       if (int.TryParse(arg[0].ToString(), out var arg1))
+                       
+                       var args = arg.Split("|");
+                       if (int.TryParse(args[0], out var arg1))
                        {
-                           if (int.TryParse(args[0], out var arg2))
+                           if (int.TryParse(args[1], out var arg2))
                            {
-                               if (int.TryParse(args[1], out var arg3))
+                               if (int.TryParse(args[2], out var arg3))
                                {
-                                   if (int.TryParse(args[2], out var arg4))
+                                   if (int.TryParse(args[3], out var arg4))
                                    {
                                        switch (arg1)
                                        {
@@ -145,14 +150,14 @@ public static class Parser
                    }
                    
                },
-               {"|HSS", (string arg) =>
+               {"|HSS>", (string arg) =>
                    {
 
-                       var a = arg[1..];
                        
-                       if (int.TryParse(arg[0].ToString(), out var arg1))
+                       var args = arg.Split("|");
+                       if (int.TryParse(args[0], out var arg1))
                        {
-                           if (int.TryParse(a, out var arg2))
+                           if (int.TryParse(args[1], out var arg2))
                            {
                               
                                        switch (arg1)
@@ -173,7 +178,7 @@ public static class Parser
                    }
                    
                },
-               {"|HCR", (string arg) =>
+               {"|HCR>", (string arg) =>
                    {
                        
                        if (int.TryParse(arg[0].ToString(), out var arg1))
@@ -196,7 +201,7 @@ public static class Parser
                    }
                    
                },
-               {"|HSR", (string arg) =>
+               {"|HSR>", (string arg) =>
                    {
                        if (int.TryParse(arg[0].ToString(), out var arg1))
                        {
@@ -220,7 +225,7 @@ public static class Parser
                    }
                    
                },
-               {"|HRR", (string arg) =>
+               {"|HRR>", (string arg) =>
                    {
                        if (int.TryParse(arg[0].ToString(), out var arg1))
                        {
@@ -274,7 +279,7 @@ public static class Parser
                    }
                    
                },
-               {"AS", (string arg) =>
+               {"AS>", (string arg) =>
                    {
                        a = arg;
                    }
@@ -310,7 +315,7 @@ public static class Parser
        }
        fs = new Font(Font.FontFamily.HELVETICA, 24);
        f = new Font(Font.FontFamily.HELVETICA, 24);
-      _actions.Add("IMG", (string arg) =>
+      _actions.Add("IMG>", (string arg) =>
           {
               var args = arg.Split("|");
               var img = Image.GetInstance(args[0]);
@@ -324,12 +329,54 @@ public static class Parser
               doc.Add(img);
           }
       );
-      _actions.Add("AUTHOR", (string arg) =>
+      _actions.Add("SVG>", (string arg) =>
+          {
+              var args = arg.Split("|");
+              var name = Path.GetFileName(args[0]);
+              var dir = Path.GetDirectoryName(args[0]);
+
+              if (dir == null) return;
+              var documentPath = Path.Combine(dir, name);
+
+              // Prepare a path for converted file saving 
+              var savePath = Path.Combine(dir, "tmp.png");
+
+
+              if (!float.TryParse(args[1], out var arg1)) return;
+              if (!float.TryParse(args[2], out var arg2)) return;
+              
+              // using var document = new SVGDocument(documentPath);
+              // var options = new ImageSaveOptions()
+              // {
+              //     HorizontalResolution = arg2,
+              //     VerticalResolution = arg1,
+              //     BackgroundColor = System.Drawing.Color.AliceBlue,
+              //     SmoothingMode = SmoothingMode.HighQuality,
+              // }; 
+              //
+              // Console.WriteLine(dir);
+              // Console.WriteLine(name);
+              //
+              // Converter.ConvertSVG(document, options, savePath);
+              
+              Converter.ConvertSVG(Path.Combine(dir, name), new ImageSaveOptions(), Path.Combine(dir, "convert-with-single-line.png"));
+
+              
+              
+              // var img = Image.GetInstance("tmp.png");
+              //
+              //
+              // img.ScaleAbsolute(arg1,arg2);
+              //     
+              // doc.Add(img);
+          }
+      );
+      _actions.Add("AUTHOR>", (string arg) =>
           {
               doc.AddAuthor(arg);
           }
       );
-      _actions.Add("TITLE", (string arg) =>
+      _actions.Add("TITLE>", (string arg) =>
           {
               doc.AddTitle(arg);
           }

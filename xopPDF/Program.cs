@@ -1,4 +1,5 @@
-﻿using iTextSharp.text;
+﻿using System.Runtime.InteropServices;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using xopPDF.elements;
 Console.Write("input path:");
@@ -16,7 +17,7 @@ var output = Console.ReadLine() ?? Environment.CurrentDirectory; ///home/bogusz/
      //
 
      if (input != null) doc.DocAdd(File.ReadAllText(input));
-
+      
      doc.Close();
  }
 

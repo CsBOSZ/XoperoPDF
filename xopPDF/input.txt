@@ -1,23 +1,26 @@
-//AUTHORauthor //TITLEtitle
-//IMG/home/bogusz/RiderProjects/xopPDF/xopPDF/Java_programming_language_logo.svg.png|200|200
+//AUTHO>Rauthor //TITLE>title
+//IMG>/home/bogusz/RiderProjects/xopPDF/xopPDF/Java_programming_language_logo.svg.png|200|200
 
 
-//CS0|250|4 CS0|250|4 //CR CR or RR 
+//SVG>/home/bogusz/RiderProjects/xopPDF/xopPDF/rysunek.svg|200|200
 
 
-//SS40 SS40 //SR SR or RR
+//CS>0|250|4 CS>0|250|4 //CR CR or RR 
 
 
-//|CS0|250|4 CS0|250|4 //CR CR
+//SS>40 SS>40 //SR SR or RR
 
 
-//|SS40 |SS40 //SR CR
+//|CS>0|250|4 |CS>0|250|4 //CR CR
+
+
+//|SS>40 |SS>40 //SR CR
 
 
 //RRR RRR //RR RR
 
 
-//RRR RRR //AShttps://github.com AShttps://github.com //AR AR
+//RRR RRR //AS>https://github.com AS>https://github.com //AR AR
 
 
 //H1 H1
@@ -29,16 +32,16 @@
 //H3 H3
 
 
-//RRR RRR //|HCS10|200|30 |HCS10|200|30 //H1 H1 
+//RRR RRR //|HCS>1|0|200|30 |HCS>1|0|200|30 //H1 H1 
 
 
-//|HCR1 |HCR1 or |HRR1 //H1 H1
+//|HCR>1 |HCR>1 or |HRR>1 //H1 H1
 
 
-//RRR RRR //|HSS120 |HSS120 //H1 H1 
+//RRR RRR //|HSS>1|20 |HSS>1|20 //H1 H1 
 
 
-//|HSR1 |HSR1 or |HRR1 //H1 H1
+//|HSR>1 |HSR>1 or |HRR>1 //H1 H1
 
 
 
