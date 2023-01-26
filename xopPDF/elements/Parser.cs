@@ -1,9 +1,7 @@
-using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices.ComTypes;
-using Aspose.Svg;
-using Aspose.Svg.Converters;
-using Aspose.Svg.Saving;
+
 using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Font = iTextSharp.text.Font;
 
 namespace xopPDF.elements;
 
@@ -309,10 +307,7 @@ public static class Parser
     }
    public static void DocAdd(this Document doc,string str)
    {
-       foreach (var keyValuePair in _actions)
-       {
-           Console.WriteLine(keyValuePair.Key);
-       }
+       
        fs = new Font(Font.FontFamily.HELVETICA, 24);
        f = new Font(Font.FontFamily.HELVETICA, 24);
       _actions.Add("IMG>", (string arg) =>
@@ -329,46 +324,25 @@ public static class Parser
               doc.Add(img);
           }
       );
-      _actions.Add("SVG>", (string arg) =>
+      _actions.Add("TAB>", (string arg) =>
           {
               var args = arg.Split("|");
-              var name = Path.GetFileName(args[0]);
-              var dir = Path.GetDirectoryName(args[0]);
-
-              if (dir == null) return;
-              var documentPath = Path.Combine(dir, name);
-
-              // Prepare a path for converted file saving 
-              var savePath = Path.Combine(dir, "tmp.png");
-
-
-              if (!float.TryParse(args[1], out var arg1)) return;
-              if (!float.TryParse(args[2], out var arg2)) return;
               
-              // using var document = new SVGDocument(documentPath);
-              // var options = new ImageSaveOptions()
-              // {
-              //     HorizontalResolution = arg2,
-              //     VerticalResolution = arg1,
-              //     BackgroundColor = System.Drawing.Color.AliceBlue,
-              //     SmoothingMode = SmoothingMode.HighQuality,
-              // }; 
-              //
-              // Console.WriteLine(dir);
-              // Console.WriteLine(name);
-              //
-              // Converter.ConvertSVG(document, options, savePath);
+              if (!int.TryParse(args[0], out var arg1)) return;
+              if (!int.TryParse(args[1], out var arg2)) return;
               
-              Converter.ConvertSVG(Path.Combine(dir, name), new ImageSaveOptions(), Path.Combine(dir, "convert-with-single-line.png"));
+              PdfPTable table = new PdfPTable(arg2);
+              table.WidthPercentage = arg1;
+              
+              foreach (var s in args.Skip(2))
+              {
 
+                  table.AddCell(s);
+
+              }
               
+              doc.Add(table);
               
-              // var img = Image.GetInstance("tmp.png");
-              //
-              //
-              // img.ScaleAbsolute(arg1,arg2);
-              //     
-              // doc.Add(img);
           }
       );
       _actions.Add("AUTHOR>", (string arg) =>
@@ -381,7 +355,10 @@ public static class Parser
               doc.AddTitle(arg);
           }
       );
-      
+      foreach (var keyValuePair in _actions)
+      {
+          Console.WriteLine(keyValuePair.Key);
+      }
        
        
        string[] tabstr = str.Split("\n");

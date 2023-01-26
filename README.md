@@ -1,37 +1,152 @@
 # XoperoPDF
 
-RRR
+>
+> Przywrócenie tekstu do podstawowej formy
+>```text
+>//RRR
+>```
 
-RR
+>
+> Przywrócenie koloru i rozmiaru tekstu do wartość zapisanych w szablonie
+>```text
+>//RR
+>```
 
-CR
+>
+> Przywrócenie koloru tekstu do wartość zapisanych w szablonie
+>```text
+>//CR
+>```
 
-|CR
+>
+> Przywrócenie rozmiaru tekstu do wartość zapisanych w szablonie
+>```text
+>//SR
+>```
 
-CS
+>
+> Przywrócenie koloru tekstu w szablonie do podstawowej formy
+>```text
+>//|CR
+>```
 
-|CS
+>
+> Przywrócenie rozmiaru tekstu w szablonie do podstawowej formy
+>```text
+>//|SR
+>```
 
-SR
+>
+> Ustawienie koloru tekstu
+>```text
+>      R   G   B
+>//CS>200|200|200
+>```
 
-|SR
+>
+> Ustawienie koloru tekstu w szablonie
+>```text
+>       R   G   B
+>//|CS>200|200|200
+>```
 
-SS
+>
+> Ustawienie rozmiaru tekstu
+>```text
+>    size
+>//SS>40
+>```
 
-|SS
+>
+> Ustawienie rozmiaru tekstu w szablonie
+>```text
+>     size
+>//|SS>40
+>```
 
-|HCS
+>
+> Ustawienie koloru nagłówka
+>```text
+>     H1-H3
+>       ^  R   G   B
+>//|HCS>1|200|200|200
+>```
 
-|HSS
+>
+> Ustawienie rozmiaru nagłówka
+>```text
+>     H1-H3
+>       ^size
+>//|HSS>1|20
+>```
 
-|HCR
+>
+> Przywrócenie koloru nagłówka do podstawowej wersji
+>```text
+>     H1-H3
+>//|HCR>1
+>```
 
-|HSR
+>
+> Przywrócenie rozmiaru nagłówka do podstawowej wersji
+>```text
+>     H1-H3
+>//|HSR>1
+>```
 
-|HRR
+>
+> Przywrócenie rozmiaru i koloru nagłówka do podstawowej wersji
+>```text
+>     H1-H3
+>//|HRR>1
+>```
 
-H
+>
+> Użycie szablonu nagłówka
+>```text
+>//H1 or //H2 or //H3
+>```
 
-AS
+>
+> Dodanie linku
+>```text
+>         URL
+>//AS>http//:URL
+>```
 
-AR
+>
+> Wyczyszczenie z linku
+>```text
+>//AR
+>```
+
+>
+> Wstawienie Zdjęcie
+>```text
+>                               Height
+>            path           Width ^
+>//IMG>/home/user/abibab.png|200|200
+>```
+
+>
+> Wstawienie tabelki
+>```text
+>WidthPercentage
+>      ^ numColumns
+>//TAB>80|3|column1_row1|column2_row1|column3_row1|column1_row2|column2_row2|column3_row2
+>```
+
+>
+> Ustawienie autora
+>```text
+>//AUTHOR>author
+>```
+
+>
+> Ustawienie tytułu
+>```text
+>//TITLE>title
+>```
+
+
+

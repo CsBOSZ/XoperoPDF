@@ -2,7 +2,7 @@
 //IMG>/home/bogusz/RiderProjects/xopPDF/xopPDF/Java_programming_language_logo.svg.png|200|200
 
 
-//SVG>/home/bogusz/RiderProjects/xopPDF/xopPDF/rysunek.svg|200|200
+//TAB>80|2|c1|c2|c3|c4
 
 
 //CS>0|250|4 CS>0|250|4 //CR CR or RR 
